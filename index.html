@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portal de Lukas Alfaro - Manuales y Juegos</title>
+<title>Portal de Lukas Alfaro - Diversión, Juegos y Creatividad 3D</title>
+<meta name="description" content="Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, noticias del mundo gamer, impresiones 3D, técnicas para dibujar en tabletas y celulares con movimiento, y mucho más. Un espacio para aprender y divertirse con creatividad y tecnología." />
 <style>
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: url('https://cdn.wallpapersafari.com/35/0/Fq51oU.gif') no-repeat center center fixed;
+    background: url('https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/goku-ultrainstinto.jpg?raw=true') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
     display: flex;
@@ -42,7 +43,6 @@
     gap: 20px;
   }
 
-  /* Barra lateral izquierda para segmentaciones */
   .sidebar-left {
     width: 230px;
     background: rgba(0,0,0,0.7);
@@ -52,14 +52,6 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
-  }
-
-  .sidebar-left h2 {
-    margin-top: 0;
-    font-size: 1.3rem;
-    text-align: center;
-    color: #ffcc00;
-    text-shadow: 1px 1px 2px #000;
   }
 
   .segment-link {
@@ -91,42 +83,48 @@
     box-shadow: 0 0 25px #ff3300;
     cursor: pointer;
     text-decoration: none;
-    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
   }
 
   .big-link:hover {
     background-color: #ff5500;
   }
 
-  /* Contenido central */
+  .big-link img {
+    height: 50px;
+    border-radius: 12px;
+  }
+
   .main-content {
     flex: 1;
-    background: rgba(20, 20, 20, 0.75);
+    background: rgba(20, 20, 20, 0.8);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 0 25px #ffcc00;
+    box-shadow: 0 0 30px #ffcc00;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 40px;
   }
 
   .main-image {
     max-width: 90%;
     border-radius: 16px;
-    box-shadow: 0 0 20px #ffdd44;
+    box-shadow: 0 0 25px #ffdd44;
   }
 
   .image-caption {
     margin-top: 10px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: #ffe066;
     font-weight: bold;
     text-align: center;
     text-shadow: 1px 1px 2px #000;
   }
 
-  /* Segunda imagen mucho más grande y centrada */
   .second-image-container {
     width: 100%;
     display: flex;
@@ -134,28 +132,27 @@
   }
 
   .side-image {
-    max-width: 80vw;
-    max-height: 480px;
+    max-width: 90vw;
+    max-height: 600px;
     border-radius: 20px;
-    box-shadow: 0 0 35px #cc00cc;
+    box-shadow: 0 0 45px #cc00cc;
   }
 
-  /* Imagen lateral izquierda con link a Reddit */
   .side-left-image-container {
     margin-top: 20px;
     background: rgba(30,30,30,0.9);
     border-radius: 15px;
     padding: 8px;
     text-align: center;
-    box-shadow: 0 0 15px #aa00aa;
+    box-shadow: 0 0 18px #aa00aa;
     cursor: pointer;
   }
 
   .side-left-image-container img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 0 10px #d966ff;
-    transition: transform 0.25s ease;
+    box-shadow: 0 0 12px #d966ff;
+    transition: transform 0.3s ease;
   }
 
   .side-left-image-container:hover img {
@@ -188,6 +185,11 @@
     .big-link {
       font-size: 1.1rem;
       padding: 12px;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .big-link img {
+      height: 40px;
     }
     .second-image-container {
       max-width: 90vw;
@@ -200,7 +202,6 @@
 
   <div class="page-container">
 
-    <!-- Lateral Izquierdo con Segmentaciones y la imagen con link -->
     <div class="sidebar-left">
       <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
         Cómo imprimir en impresora 3D
@@ -211,10 +212,6 @@
 
       <a class="segment-link" href="https://cults3d.com/es/etiquetas/toy+story?srsltid=AfmBOoprUIlguEZg_goST-KBNoHWao-7yDzSaMaiU0vb2S0XAOLX0oqt" target="_blank" rel="noopener noreferrer">
         Personas de Toy Story para imprimir en 3D
-      </a>
-
-      <a class="big-link" href="https://es.wikipedia.org/wiki/Dragon_Ball" target="_blank" rel="noopener noreferrer">
-        Serie de Dragon Ball completa desde Dragon Ball hasta Dragon Ball Daima
       </a>
 
       <div class="side-left-image-container" onclick="window.open('https://www.reddit.com/r/BanjoKazooie/comments/1hr75yy/will_we_ever_get_banjo_threeie/?tl=es-419', '_blank');" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
@@ -233,6 +230,16 @@
       <div class="second-image-container">
         <img class="side-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%202.png?raw=true" alt="Imagen secundaria grande" />
       </div>
+
+      <a href="https://es.wikipedia.org/wiki/Dragon_Ball" target="_blank" rel="noopener noreferrer" class="big-link" title="Serie Dragon Ball completa">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png/330px-Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png" alt="Goku Ultra Instinto" />
+        Serie de Dragon Ball completa desde Dragon Ball hasta Dragon Ball Daima
+      </a>
+
+      <p style="max-width: 900px; text-align: center; font-size: 1.15rem; color: #ffecb3; font-weight: 600; text-shadow: 1px 1px 3px #000;">
+        Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
+      </p>
+
     </div>
 
   </div>
