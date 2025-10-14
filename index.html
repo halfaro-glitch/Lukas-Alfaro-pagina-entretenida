@@ -4,16 +4,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Portal de Lukas Alfaro - Diversión, Juegos y Creatividad 3D</title>
-<meta name="description" content="Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, noticias del mundo gamer, impresiones 3D, técnicas para dibujar en tabletas y celulares con movimiento, y mucho más. Un espacio para aprender y divertirse con creatividad y tecnología." />
+<meta name="description" content="Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, noticias del mundo gamer, impresiones 3D, técnicas para dibujar en tabletas y celulares con movimiento, y más." />
 <style>
+  /* Fondo simulando Matrix con caracteres verdes en movimiento */
   body, html {
     margin: 0; padding: 0; height: 100%;
+    overflow: hidden;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: url('https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/goku-ultrainstinto.jpg?raw=true') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
+    background-color: #000000;
+    color: #00ff00;
     display: flex;
     flex-direction: column;
+    position: relative;
+  }
+
+  /* Canvas para animación */
+  #matrix-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
   }
 
   #header-text {
@@ -22,17 +33,17 @@
     right: 20px;
     font-size: 2rem;
     font-weight: bold;
-    color: #ffd700;
-    text-shadow: 2px 2px 5px #000000;
+    color: #39ff14;
+    text-shadow: 0 0 8px #39ff14;
     user-select: none;
     z-index: 10;
     animation: shine 4s infinite alternate;
   }
 
   @keyframes shine {
-    0% { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
-    50% { text-shadow: 0 0 20px #ff8c00, 0 0 30px #ff8c00; }
-    100% { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
+    0% { text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14; }
+    50% { text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00; }
+    100% { text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14; }
   }
 
   .page-container {
@@ -41,46 +52,48 @@
     margin-top: 70px;
     padding: 20px;
     gap: 20px;
+    z-index: 5;
+    position: relative;
   }
 
   .sidebar-left {
     width: 230px;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     border-radius: 15px;
     padding: 15px;
-    box-shadow: 0 0 15px #ffd700;
+    box-shadow: 0 0 15px #39ff14;
     display: flex;
     flex-direction: column;
     gap: 18px;
   }
 
   .segment-link {
-    background: #222;
+    background: #003300;
     padding: 12px;
     border-radius: 12px;
     text-align: center;
     font-weight: bold;
-    color: #ffdb4d;
+    color: #39ff14;
     cursor: pointer;
-    box-shadow: 0 0 10px #ffaa00;
-    transition: background-color 0.3s ease;
+    box-shadow: 0 0 12px #00ff00;
+    transition: background-color 0.3s ease, color 0.3s ease;
     text-decoration: none;
   }
 
   .segment-link:hover {
-    background-color: #ffaa00;
-    color: #000;
+    background-color: #00ff00;
+    color: #000000;
   }
 
   .big-link {
-    background: #cc2200;
+    background: #004400;
     padding: 16px;
     border-radius: 16px;
     font-size: 1.3rem;
     font-weight: bolder;
-    color: #fff9a6;
+    color: #b3ffb3;
     text-align: center;
-    box-shadow: 0 0 25px #ff3300;
+    box-shadow: 0 0 25px #39ff14;
     cursor: pointer;
     text-decoration: none;
     display: flex;
@@ -90,7 +103,8 @@
   }
 
   .big-link:hover {
-    background-color: #ff5500;
+    background-color: #33ff33;
+    color: #000;
   }
 
   .big-link img {
@@ -100,29 +114,29 @@
 
   .main-content {
     flex: 1;
-    background: rgba(20, 20, 20, 0.8);
+    background: rgba(0, 51, 0, 0.85);
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 0 30px #ffcc00;
+    box-shadow: 0 0 30px #39ff14;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 40px;
+    color: #d4ffd4;
   }
 
   .main-image {
     max-width: 90%;
     border-radius: 16px;
-    box-shadow: 0 0 25px #ffdd44;
+    box-shadow: 0 0 30px #39ff14;
   }
 
   .image-caption {
     margin-top: 10px;
     font-size: 1.3rem;
-    color: #ffe066;
     font-weight: bold;
     text-align: center;
-    text-shadow: 1px 1px 2px #000;
+    text-shadow: 1px 1px 3px #002200;
   }
 
   .second-image-container {
@@ -135,23 +149,23 @@
     max-width: 90vw;
     max-height: 600px;
     border-radius: 20px;
-    box-shadow: 0 0 45px #cc00cc;
+    box-shadow: 0 0 50px #00ff00;
   }
 
   .side-left-image-container {
     margin-top: 20px;
-    background: rgba(30,30,30,0.9);
+    background: rgba(0,51,0,0.9);
     border-radius: 15px;
     padding: 8px;
     text-align: center;
-    box-shadow: 0 0 18px #aa00aa;
+    box-shadow: 0 0 20px #00ff00;
     cursor: pointer;
   }
 
   .side-left-image-container img {
     width: 100%;
     border-radius: 12px;
-    box-shadow: 0 0 12px #d966ff;
+    box-shadow: 0 0 16px #00ff00;
     transition: transform 0.3s ease;
   }
 
@@ -160,11 +174,20 @@
   }
 
   .side-left-caption {
-    color: #ff99ff;
+    color: #ccffcc;
     margin-top: 8px;
     font-weight: bold;
     font-size: 1.1rem;
     text-decoration: underline;
+  }
+
+  p.description {
+    max-width: 900px;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 3px #002200;
+    color: #ccffcc;
   }
 
   @media (max-width: 720px) {
@@ -198,51 +221,95 @@
 </style>
 </head>
 <body>
-  <div id="header-text">Portal de Lukas Alfaro</div>
+<canvas id="matrix-canvas"></canvas>
 
-  <div class="page-container">
+<div id="header-text">Portal de Lukas Alfaro</div>
 
-    <div class="sidebar-left">
-      <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
-        Cómo imprimir en impresora 3D
-      </a>
-      <a class="segment-link" href="#" onclick="alert('Aquí aprenderás a dibujar en celular o tablet.'); return false;">
-        Cómo dibujar en celular o tablet
-      </a>
+<div class="page-container">
 
-      <a class="segment-link" href="https://cults3d.com/es/etiquetas/toy+story?srsltid=AfmBOoprUIlguEZg_goST-KBNoHWao-7yDzSaMaiU0vb2S0XAOLX0oqt" target="_blank" rel="noopener noreferrer">
-        Personas de Toy Story para imprimir en 3D
-      </a>
+  <div class="sidebar-left">
+    <a class="segment-link" href="https://www.youtube.com/watch?v=X7M2zG8vyMc" target="_blank" rel="noopener noreferrer">
+      Cómo dibujar en celular o tablet
+    </a>
+    
+    <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
+      Cómo imprimir en impresora 3D
+    </a>
+    <a class="segment-link" href="https://cults3d.com/es/etiquetas/toy+story?srsltid=AfmBOoprUIlguEZg_goST-KBNoHWao-7yDzSaMaiU0vb2S0XAOLX0oqt" target="_blank" rel="noopener noreferrer">
+      Personas de Toy Story para imprimir en 3D
+    </a>
 
-      <div class="side-left-image-container" onclick="window.open('https://www.reddit.com/r/BanjoKazooie/comments/1hr75yy/will_we_ever_get_banjo_threeie/?tl=es-419', '_blank');" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
-        <img src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/bajo%203.png?raw=true" alt="Por qué no se creó" />
-        <div class="side-left-caption">Por qué no se creó</div>
-      </div>
+    <div class="side-left-image-container" onclick="window.open('https://www.reddit.com/r/BanjoKazooie/comments/1hr75yy/will_we_ever_get_banjo_threeie/?tl=es-419', '_blank');" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
+      <img src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/bajo%203.png?raw=true" alt="¿Por qué no se creó?" />
+      <div class="side-left-caption">¿Por qué no se creó?</div>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <div>
+      <img class="main-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%201%20.png?raw=true" alt="Blob de Lukitas" />
+      <div class="image-caption">Blob de Lukitas en donde te enseñaré a hacer cosas entretenidas</div>
     </div>
 
-    <div class="main-content">
-
-      <div>
-        <img class="main-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%201%20.png?raw=true" alt="Blob de Lukitas" />
-        <div class="image-caption">Blob de Lukitas en donde te enseñaré a hacer cosas entretenidas</div>
-      </div>
-
-      <div class="second-image-container">
-        <img class="side-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%202.png?raw=true" alt="Imagen secundaria grande" />
-      </div>
-
-      <a href="https://es.wikipedia.org/wiki/Dragon_Ball" target="_blank" rel="noopener noreferrer" class="big-link" title="Serie Dragon Ball completa">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png/330px-Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png" alt="Goku Ultra Instinto" />
-        Serie de Dragon Ball completa desde Dragon Ball hasta Dragon Ball Daima
-      </a>
-
-      <p style="max-width: 900px; text-align: center; font-size: 1.15rem; color: #ffecb3; font-weight: 600; text-shadow: 1px 1px 3px #000;">
-        Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
-      </p>
-
+    <div class="second-image-container">
+      <img class="side-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%202.png?raw=true" alt="Imagen secundaria grande" />
     </div>
+
+    <a href="https://www.youtube.com/channel/UCBA1nK--TI4XUVUNUNcrfdg" target="_blank" rel="noopener noreferrer" class="big-link" title="Serie Dragon Ball completa">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png/330px-Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png" alt="Goku Ultra Instinto" />
+      Serie de Dragon Ball completa desde Dragon Ball hasta Dragon Ball Daima
+    </a>
+
+    <p class="description">
+      Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
+    </p>
 
   </div>
 
+</div>
+
+<script>
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+let width, height;
+function resize() {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const letters = 'アァイィウヴエォカキクケコサシスセソタチツテトナニヌネノハヒフゥヘホマミムメモヤユヨラリルレロワヰヱヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const fontSize = 16;
+const columns = Math.floor(width / fontSize);
+const drops = new Array(columns).fill(1);
+
+function draw() {
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.fillStyle = '#00ff00';
+  ctx.font = fontSize + 'px monospace';
+
+  for(let i = 0; i < drops.length; i++) {
+    const text = letters.charAt(Math.floor(Math.random() * letters.length));
+    const x = i * fontSize;
+    const y = drops[i] * fontSize;
+
+    ctx.fillText(text, x, y);
+
+    if(y > height && Math.random() > 0.975) {
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 40);
+</script>
 </body>
 </html>
