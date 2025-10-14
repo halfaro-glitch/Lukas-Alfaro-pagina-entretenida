@@ -1,120 +1,218 @@
-/* Fondo con filtro oscuro para mejor visibilidad */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.6);
-  z-index: 0;
-}
-
-/* Texto fijo en esquina superior derecha */
-#header-text {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ffd700;
-  text-shadow: 2px 2px 4px #000000;
-  z-index: 10;
-  user-select: none;
-}
-
-/* Contenedor principal */
-.container {
-  position: relative;
-  z-index: 5;
-  max-width: 1200px;
-  margin: 80px auto 40px auto;
-  padding: 10px;
-  background: rgba(20, 20, 20, 0.7);
-  border-radius: 15px;
-  box-shadow: 0 0 20px #ffd700;
-}
-
-/* Título sección */
-.section-title {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #ffd700;
-  text-shadow: 1px 1px 3px #000;
-}
-
-/* Grid de manuales (videojuegos, imágenes, etc) */
-.manual-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.manual-item {
-  background: #222;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 15px #ffa500;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.manual-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #ff4500;
-}
-
-.manual-item img, .manual-item video {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-  border-bottom: 2px solid #ffb347;
-}
-
-.manual-description {
-  padding: 10px;
-  font-size: 1.1rem;
-  color: #fff9c4;
-  text-align: center;
-}
-
-/* Animación divertida para niños en el título */
-@keyframes shine {
-  0% {
-    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Portal de Lukas Alfaro - Manuales y Juegos</title>
+<style>
+  body, html {
+    margin: 0; padding: 0; height: 100%;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: url('https://cdn.wallpapersafari.com/35/0/Fq51oU.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
   }
-  50% {
-    text-shadow: 0 0 20px #ff8c00, 0 0 30px #ff8c00;
+
+  #header-text {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 2px 2px 5px #000000;
+    user-select: none;
+    z-index: 10;
+    animation: shine 4s infinite alternate;
   }
-  100% {
-    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+
+  @keyframes shine {
+    0% { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
+    50% { text-shadow: 0 0 20px #ff8c00, 0 0 30px #ff8c00; }
+    100% { text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700; }
   }
-}
 
-#header-text {
-  animation: shine 3s infinite alternate;
-}
-</style> </head> <body> <div id="header-text">Portal de Lukas Alfaro</div> <div class="container"> <h1 class="section-title">Manuales de Impresión 3D y Videojuegos</h1>
-text
-<div class="manual-grid">
-  <!-- Aquí coloca las imágenes o videos con descripciones -->
-  <div class="manual-item">
-    <img src="ruta/a/imagen1.jpg" alt="Manual 1" />
-    <div class="manual-description">Manual Básico de Impresión 3D</div>
+  .page-container {
+    display: flex;
+    flex: 1;
+    margin-top: 70px;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  /* Barra lateral izquierda para segmentaciones */
+  .sidebar-left {
+    width: 210px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 15px #ffd700;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .sidebar-left h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    text-align: center;
+    color: #ffcc00;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .segment-link {
+    background: #222;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #ffdb4d;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffaa00;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+  }
+
+  .segment-link:hover {
+    background-color: #ffaa00;
+    color: #000;
+  }
+
+  /* Contenido central */
+  .main-content {
+    flex: 1;
+    background: rgba(20, 20, 20, 0.75);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 25px #ffcc00;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .main-image {
+    max-width: 90%;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #ffdd44;
+  }
+
+  .image-caption {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #ffe066;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  /* Segunda imagen al lado derecho */
+  .side-image {
+    width: 220px;
+    border-radius: 16px;
+    box-shadow: 0 0 20px #cc00cc;
+  }
+
+  /* Imagen lateral izquierda con link a Reddit */
+  .side-left-image-container {
+    margin-top: 20px;
+    background: rgba(30,30,30,0.9);
+    border-radius: 15px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 0 15px #aa00aa;
+  }
+
+  .side-left-image-container img {
+    width: 100%;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #d966ff;
+    transition: transform 0.25s ease;
+  }
+
+  .side-left-image-container img:hover {
+    transform: scale(1.05);
+  }
+
+  .side-left-caption {
+    color: #ff99ff;
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* Contenedor horizontal para imágenes principal y segunda */
+  .image-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 720px) {
+    .page-container {
+      flex-direction: column;
+    }
+    .sidebar-left {
+      width: 100%;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .segment-link {
+      font-size: 0.9rem;
+      padding: 10px 6px;
+    }
+    .image-row {
+      flex-direction: column;
+      align-items: center;
+    }
+    .side-image {
+      width: 90%;
+    }
+  }
+</style>
+</head>
+<body>
+  <div id="header-text">Portal de Lukas Alfaro</div>
+
+  <div class="page-container">
+
+    <!-- Lateral Izquierdo con Segmentaciones y la imagen con link -->
+    <div class="sidebar-left">
+      <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
+        Cómo imprimir en impresora 3D
+      </a>
+      <a class="segment-link" href="#" onclick="alert('Aquí aprenderás a dibujar en celular o tablet.'); return false;">
+        Cómo dibujar en celular o tablet
+      </a>
+
+      <div class="side-left-image-container" onclick="window.open('https://www.reddit.com/r/BanjoKazooie/comments/1hr75yy/will_we_ever_get_banjo_threeie/?tl=es-419', '_blank');" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
+        <img src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/bajo%203.png?raw=true" alt="Por qué se creó" />
+        <div class="side-left-caption">Por qué se creó</div>
+      </div>
+    </div>
+
+    <div class="main-content">
+
+      <div class="image-row">
+        <div>
+          <img class="main-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%201%20.png?raw=true" alt="Blob de Lukitas" />
+          <div class="image-caption">Blob de Lukitas en donde te enseñaré a hacer cosas entretenidas</div>
+        </div>
+
+        <img class="side-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%202.png?raw=true" alt="Imagen secundaria" />
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="manual-item">
-    <video src="ruta/a/video1.mp4" controls></video>
-    <div class="manual-description">Tutorial Videojuego 3D</div>
-  </div>
-
-  <div class="manual-item">
-    <img src="ruta/a/imagen2.jpg" alt="Manual 2" />
-    <div class="manual-description">Modelos para Juegos y 3D</div>
-  </div>
-
-  <div class="manual-item">
-    <video src="ruta/a/video2.mp4" controls></video>
-    <div class="manual-description">Guía Avanzada de Impresoras</div>
-  </div>
-
-</div>
+</body>
+</html>
