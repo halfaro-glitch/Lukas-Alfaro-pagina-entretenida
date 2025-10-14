@@ -6,25 +6,31 @@
 <title>Portal de Lukas Alfaro - Diversión, Juegos y Creatividad 3D</title>
 <meta name="description" content="Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, noticias del mundo gamer, impresiones 3D, técnicas para dibujar en tabletas y celulares con movimiento, y más." />
 <style>
-  /* Fondo simulando Matrix con caracteres verdes en movimiento */
+  /* Reset y tipografía */
   body, html {
     margin: 0; padding: 0; height: 100%;
-    overflow: hidden;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background-color: #000000;
-    color: #00ff00;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    background-color: #000;
+    overflow-x: hidden;
   }
 
-  /* Canvas para animación */
+  /* Canvas fijo en background */
   #matrix-canvas {
     position: fixed;
     top: 0; left: 0;
     width: 100vw;
     height: 100vh;
     z-index: 0;
+  }
+
+  /* Contenedor principal encima del canvas */
+  .content-wrapper {
+    position: relative;
+    z-index: 10;
+    color: #39ff14;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
   #header-text {
@@ -36,8 +42,11 @@
     color: #39ff14;
     text-shadow: 0 0 8px #39ff14;
     user-select: none;
-    z-index: 10;
+    z-index: 20;
     animation: shine 4s infinite alternate;
+    background: rgba(0,0,0,0.6);
+    padding: 4px 8px;
+    border-radius: 8px;
   }
 
   @keyframes shine {
@@ -52,8 +61,6 @@
     margin-top: 70px;
     padding: 20px;
     gap: 20px;
-    z-index: 5;
-    position: relative;
   }
 
   .sidebar-left {
@@ -82,7 +89,7 @@
 
   .segment-link:hover {
     background-color: #00ff00;
-    color: #000000;
+    color: #000;
   }
 
   .big-link {
@@ -221,52 +228,56 @@
 </style>
 </head>
 <body>
+
 <canvas id="matrix-canvas"></canvas>
 
-<div id="header-text">Portal de Lukas Alfaro</div>
+<div class="content-wrapper">
 
-<div class="page-container">
+  <div id="header-text">Portal de Lukas Alfaro</div>
 
-  <div class="sidebar-left">
-    <a class="segment-link" href="https://www.youtube.com/watch?v=X7M2zG8vyMc" target="_blank" rel="noopener noreferrer">
-      Cómo dibujar en celular o tablet
-    </a>
-    
-    <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
-      Cómo imprimir en impresora 3D
-    </a>
-    <a class="segment-link" href="https://cults3d.com/es/etiquetas/toy+story?srsltid=AfmBOoprUIlguEZg_goST-KBNoHWao-7yDzSaMaiU0vb2S0XAOLX0oqt" target="_blank" rel="noopener noreferrer">
-      Personas de Toy Story para imprimir en 3D
-    </a>
+  <div class="page-container">
 
-    <div class="side-left-image-container" onclick="window.open('https://www.reddit.com/r/BanjoKazooie/comments/1hr75yy/will_we_ever_get_banjo_threeie/?tl=es-419', '_blank');" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
-      <img src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/bajo%203.png?raw=true" alt="¿Por qué no se creó?" />
-      <div class="side-left-caption">¿Por qué no se creó?</div>
+    <div class="sidebar-left">
+      <a class="segment-link" href="https://www.youtube.com/watch?v=X7M2zG8vyMc" target="_blank" rel="noopener noreferrer">
+        Cómo dibujar en celular o tablet
+      </a>
+
+      <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
+        Cómo imprimir en impresora 3D
+      </a>
+      <a class="segment-link" href="https://cults3d.com/es/etiquetas/toy+story?srsltid=AfmBOoprUIlguEZg_goST-KBNoHWao-7yDzSaMaiU0vb2S0XAOLX0oqt" target="_blank" rel="noopener noreferrer">
+        Personas de Toy Story para imprimir en 3D
+      </a>
+
+      <div class="side-left-image-container" onclick="window.open('https://www.reddit.com/r/BanjoKazooie/comments/1hr75yy/will_we_ever_get_banjo_threeie/?tl=es-419', '_blank');" role="link" tabindex="0" onkeypress="if(event.key==='Enter'){this.click();}">
+        <img src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/bajo%203.png?raw=true" alt="¿Por qué no se creó?" />
+        <div class="side-left-caption">¿Por qué no se creó?</div>
+      </div>
     </div>
+
+    <div class="main-content">
+
+      <div>
+        <img class="main-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%201%20.png?raw=true" alt="Blob de Lukitas" />
+        <div class="image-caption">Blob de Lukitas en donde te enseñaré a hacer cosas entretenidas</div>
+      </div>
+
+      <div class="second-image-container">
+        <img class="side-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%202.png?raw=true" alt="Imagen secundaria grande" />
+      </div>
+
+      <a href="https://www.youtube.com/channel/UCBA1nK--TI4XUVUNUNcrfdg" target="_blank" rel="noopener noreferrer" class="big-link" title="Serie Dragon Ball completa">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png/330px-Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png" alt="Goku Ultra Instinto" />
+        Serie de Dragon Ball completa desde Dragon Ball hasta Dragon Ball Daima
+      </a>
+
+      <p class="description">
+        Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
+      </p>
+
+    </div>
+
   </div>
-
-  <div class="main-content">
-
-    <div>
-      <img class="main-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%201%20.png?raw=true" alt="Blob de Lukitas" />
-      <div class="image-caption">Blob de Lukitas en donde te enseñaré a hacer cosas entretenidas</div>
-    </div>
-
-    <div class="second-image-container">
-      <img class="side-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%202.png?raw=true" alt="Imagen secundaria grande" />
-    </div>
-
-    <a href="https://www.youtube.com/channel/UCBA1nK--TI4XUVUNUNcrfdg" target="_blank" rel="noopener noreferrer" class="big-link" title="Serie Dragon Ball completa">
-      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7b/Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png/330px-Goku_Ultra_Instinct_%28Dragon_Ball_Super%29.png" alt="Goku Ultra Instinto" />
-      Serie de Dragon Ball completa desde Dragon Ball hasta Dragon Ball Daima
-    </a>
-
-    <p class="description">
-      Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
-    </p>
-
-  </div>
-
 </div>
 
 <script>
