@@ -199,7 +199,6 @@
     margin: 0 auto;
   }
 
-  /* Sección juegos y manualidades */
   .section {
     background: rgba(0,70,0,0.9);
     border-radius: 15px;
@@ -214,7 +213,6 @@
     margin-top: 0;
   }
 
-  /* Pacman juego básico */
   #pacman-canvas {
     display: block;
     margin: 10px auto;
@@ -223,7 +221,6 @@
     border-radius: 12px;
   }
 
-  /* Sección Nintendo 64 */
   .n64-section {
     text-align: center;
     background: #004400;
@@ -242,7 +239,6 @@
     text-decoration: underline;
   }
 
-  /* Casilla comentarios */
   .comments-section {
     background: rgba(0,70,0,0.9);
     border-radius: 15px;
@@ -303,7 +299,6 @@
     white-space: pre-wrap;
   }
 
-  /* Responsive */
   @media (max-width: 960px) {
     .page-container {
       flex-direction: column;
@@ -366,20 +361,16 @@
         Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
       </p>
 
-      <!-- Sección Juegos y Manualidades -->
       <section class="section" aria-labelledby="juegos-manualidades-title">
         <h2 id="juegos-manualidades-title">Juegos y Manualidades</h2>
 
-        <!-- Juego Pacman -->
         <canvas id="pacman-canvas" width="400" height="400" aria-label="Juego Pacman"></canvas>
       </section>
 
-      <!-- Sección Nintendo 64 -->
       <section class="n64-section" aria-label="Juegos de Nintendo 64">
         <p><strong>Juegos de Nintendo 64:</strong> <a href="https://onlinemania.es/categoria/35/Nintendo-64/1.html" target="_blank" rel="noopener noreferrer">onlinemania.es/categoria/35/Nintendo-64/1.html</a></p>
       </section>
 
-      <!-- Sección Comentarios -->
       <section class="comments-section" aria-labelledby="comentarios-title">
         <h2 id="comentarios-title">Comentarios</h2>
         <form id="commentForm" aria-label="Formulario para dejar comentario">
@@ -396,7 +387,6 @@
 </div>
 
 <script>
-/* Animación Matrix */
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 
@@ -432,8 +422,6 @@ function draw() {
 }
 setInterval(draw, 40);
 
-/* Juego Pacman muy básico y simplificado */
-
 const pacmanCanvas = document.getElementById('pacman-canvas');
 const pc = pacmanCanvas.getContext('2d');
 
@@ -445,7 +433,6 @@ let pellets = [];
 let score = 0;
 let gameOver = false;
 
-// Crear pellets en el grid excepto en la posición de Pacman
 for(let i = 0; i < gridCount; i++) {
   for(let j = 0; j < gridCount; j++) {
     if(!(i === pacman.x && j === pacman.y)) {
@@ -460,7 +447,7 @@ function drawPacman() {
 
   pc.fillStyle = 'yellow';
   pc.beginPath();
-  // Boca abre y cierra animación simple
+
   let startAngle, endAngle;
   if(pacman.mouthOpen) {
     startAngle = 0.25 * Math.PI;
@@ -495,7 +482,6 @@ function updateGame() {
   if(pacman.y < 0) pacman.y = gridCount -1;
   if(pacman.y >= gridCount) pacman.y = 0;
 
-  // Comer pellet
   for(let i = 0; i < pellets.length; i++) {
     if(pellets[i].x === pacman.x && pellets[i].y === pacman.y) {
       pellets.splice(i, 1);
@@ -504,10 +490,8 @@ function updateGame() {
     }
   }
 
-  // Animar boca pacman
   pacman.mouthOpen = !pacman.mouthOpen;
 
-  // Revisar si ganaste
   if(pellets.length === 0) {
     gameOver = true;
     alert('¡Felicidades! Has comido todos los pellets.');
@@ -531,7 +515,6 @@ function gameLoop() {
 
 setInterval(gameLoop, 300);
 
-// Teclas para controlar Pacman
 window.addEventListener('keydown', e => {
   switch(e.key) {
     case 'ArrowUp':
@@ -549,7 +532,7 @@ window.addEventListener('keydown', e => {
   }
 });
 
-/* Comentarios simples */
+/* Comentarios */
 const commentForm = document.getElementById('commentForm');
 const commentInput = document.getElementById('comment-input');
 const commentsList = document.getElementById('comments-list');
@@ -565,5 +548,6 @@ commentForm.addEventListener('submit', e => {
   commentInput.value = '';
 });
 </script>
+
 </body>
 </html>
