@@ -1,0 +1,120 @@
+/* Fondo con filtro oscuro para mejor visibilidad */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 0;
+}
+
+/* Texto fijo en esquina superior derecha */
+#header-text {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 2px 2px 4px #000000;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  z-index: 5;
+  max-width: 1200px;
+  margin: 80px auto 40px auto;
+  padding: 10px;
+  background: rgba(20, 20, 20, 0.7);
+  border-radius: 15px;
+  box-shadow: 0 0 20px #ffd700;
+}
+
+/* Título sección */
+.section-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffd700;
+  text-shadow: 1px 1px 3px #000;
+}
+
+/* Grid de manuales (videojuegos, imágenes, etc) */
+.manual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.manual-item {
+  background: #222;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px #ffa500;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.manual-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #ff4500;
+}
+
+.manual-item img, .manual-item video {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid #ffb347;
+}
+
+.manual-description {
+  padding: 10px;
+  font-size: 1.1rem;
+  color: #fff9c4;
+  text-align: center;
+}
+
+/* Animación divertida para niños en el título */
+@keyframes shine {
+  0% {
+    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+  }
+  50% {
+    text-shadow: 0 0 20px #ff8c00, 0 0 30px #ff8c00;
+  }
+  100% {
+    text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+  }
+}
+
+#header-text {
+  animation: shine 3s infinite alternate;
+}
+</style> </head> <body> <div id="header-text">Portal de Lukas Alfaro</div> <div class="container"> <h1 class="section-title">Manuales de Impresión 3D y Videojuegos</h1>
+text
+<div class="manual-grid">
+  <!-- Aquí coloca las imágenes o videos con descripciones -->
+  <div class="manual-item">
+    <img src="ruta/a/imagen1.jpg" alt="Manual 1" />
+    <div class="manual-description">Manual Básico de Impresión 3D</div>
+  </div>
+
+  <div class="manual-item">
+    <video src="ruta/a/video1.mp4" controls></video>
+    <div class="manual-description">Tutorial Videojuego 3D</div>
+  </div>
+
+  <div class="manual-item">
+    <img src="ruta/a/imagen2.jpg" alt="Manual 2" />
+    <div class="manual-description">Modelos para Juegos y 3D</div>
+  </div>
+
+  <div class="manual-item">
+    <video src="ruta/a/video2.mp4" controls></video>
+    <div class="manual-description">Guía Avanzada de Impresoras</div>
+  </div>
+
+</div>
