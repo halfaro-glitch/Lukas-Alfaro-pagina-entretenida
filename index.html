@@ -214,40 +214,32 @@
     margin-top: 0;
   }
 
-  /* Juego dibujo simple */
-  #drawing-canvas {
-    width: 100%;
-    max-width: 600px;
-    background: #001100;
-    border: 2px solid #00ff00;
-    border-radius: 10px;
+  /* Pacman juego básico */
+  #pacman-canvas {
     display: block;
     margin: 10px auto;
-    cursor: crosshair;
+    background: #001100;
+    border: 2px solid #00ff00;
+    border-radius: 12px;
   }
 
-  /* Controles dibujo */
-  .draw-controls {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
-  }
-
-  .draw-controls button {
-    background: #003300;
-    border: none;
-    padding: 8px 12px;
-    color: #39ff14;
-    cursor: pointer;
-    border-radius: 8px;
-    box-shadow: 0 0 8px #00ff00;
+  /* Sección Nintendo 64 */
+  .n64-section {
+    text-align: center;
+    background: #004400;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 20px #33ff33;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #ccffcc;
     font-weight: bold;
+    font-size: 1.2rem;
   }
 
-  .draw-controls button:hover {
-    background: #00ff00;
-    color: #000;
+  .n64-section a {
+    color: #99ff99;
+    text-decoration: underline;
   }
 
   /* Casilla comentarios */
@@ -374,27 +366,17 @@
         Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
       </p>
 
-      <!-- Sección de Juegos y Manualidades -->
+      <!-- Sección Juegos y Manualidades -->
       <section class="section" aria-labelledby="juegos-manualidades-title">
         <h2 id="juegos-manualidades-title">Juegos y Manualidades</h2>
 
-        <!-- Juego simple: Juego de adivinar el número -->
-        <article style="text-align:center; margin-bottom: 30px;">
-          <h3>Juego: Adivina el Número</h3>
-          <p>Piensa en un número entre 1 y 20. ¡Intenta adivinarlo!</p>
-          <input type="number" id="guessInput" min="1" max="20" placeholder="Escribe tu número" aria-label="Número para adivinar" />
-          <button id="guessBtn">Adivinar</button>
-          <p id="guessMessage" style="margin-top:10px; font-weight: bold;"></p>
-        </article>
+        <!-- Juego Pacman -->
+        <canvas id="pacman-canvas" width="400" height="400" aria-label="Juego Pacman"></canvas>
+      </section>
 
-        <!-- Manualidad: Dibujo simple con canvas -->
-        <article>
-          <h3>Dibuja aquí con el mouse o el dedo</h3>
-          <div class="draw-controls" aria-label="Controles para dibujo">
-            <button id="clearBtn" aria-label="Borrar dibujo">Borrar</button>
-          </div>
-          <canvas id="drawing-canvas" width="600" height="400" aria-label="Área de dibujo"></canvas>
-        </article>
+      <!-- Sección Nintendo 64 -->
+      <section class="n64-section" aria-label="Juegos de Nintendo 64">
+        <p><strong>Juegos de Nintendo 64:</strong> <a href="https://onlinemania.es/categoria/35/Nintendo-64/1.html" target="_blank" rel="noopener noreferrer">onlinemania.es/categoria/35/Nintendo-64/1.html</a></p>
       </section>
 
       <!-- Sección Comentarios -->
@@ -450,79 +432,121 @@ function draw() {
 }
 setInterval(draw, 40);
 
-/* Juego: Adivina número */
-const guessBtn = document.getElementById('guessBtn');
-const guessInput = document.getElementById('guessInput');
-const guessMessage = document.getElementById('guessMessage');
-const secretNumber = Math.floor(Math.random() * 20) + 1;
+/* Juego Pacman muy básico y simplificado */
 
-guessBtn.addEventListener('click', () => {
-  const guess = Number(guessInput.value);
-  if(isNaN(guess) || guess < 1 || guess > 20) {
-    guessMessage.textContent = 'Por favor, ingresa un número entre 1 y 20.';
-    return;
+const pacmanCanvas = document.getElementById('pacman-canvas');
+const pc = pacmanCanvas.getContext('2d');
+
+const gridSize = 20;
+const gridCount = pacmanCanvas.width / gridSize;
+
+let pacman = { x: 10, y: 10, dirX: 0, dirY: 0, mouthOpen: true };
+let pellets = [];
+let score = 0;
+let gameOver = false;
+
+// Crear pellets en el grid excepto en la posición de Pacman
+for(let i = 0; i < gridCount; i++) {
+  for(let j = 0; j < gridCount; j++) {
+    if(!(i === pacman.x && j === pacman.y)) {
+      pellets.push({x: i, y: j});
+    }
   }
-  if(guess === secretNumber) {
-    guessMessage.textContent = '¡Felicidades! Has adivinado el número.';
-  } else if(guess < secretNumber) {
-    guessMessage.textContent = 'Intenta un número más alto.';
+}
+
+function drawPacman() {
+  const px = pacman.x * gridSize + gridSize/2;
+  const py = pacman.y * gridSize + gridSize/2;
+
+  pc.fillStyle = 'yellow';
+  pc.beginPath();
+  // Boca abre y cierra animación simple
+  let startAngle, endAngle;
+  if(pacman.mouthOpen) {
+    startAngle = 0.25 * Math.PI;
+    endAngle = 1.75 * Math.PI;
   } else {
-    guessMessage.textContent = 'Intenta un número más bajo.';
+    startAngle = 0;
+    endAngle = 2 * Math.PI;
   }
-});
-
-/* Dibujo sencillo */
-const drawingCanvas = document.getElementById('drawing-canvas');
-const dctx = drawingCanvas.getContext('2d');
-let drawing = false;
-let lastX = 0, lastY = 0;
-dctx.strokeStyle = '#39ff14';
-dctx.lineWidth = 3;
-dctx.lineJoin = 'round';
-dctx.lineCap = 'round';
-
-function startDrawing(e) {
-  drawing = true;
-  [lastX, lastY] = getCoords(e);
+  pc.arc(px, py, gridSize/2 - 2, startAngle, endAngle, false);
+  pc.lineTo(px, py);
+  pc.closePath();
+  pc.fill();
 }
 
-function stopDrawing() {
-  drawing = false;
-  dctx.beginPath();
+function drawPellets() {
+  pc.fillStyle = 'white';
+  pellets.forEach(p => {
+    pc.beginPath();
+    pc.arc(p.x * gridSize + gridSize/2, p.y * gridSize + gridSize/2, gridSize/6, 0, 2*Math.PI);
+    pc.fill();
+  });
 }
 
-function drawLine(e) {
-  if(!drawing) return;
-  const [x, y] = getCoords(e);
-  dctx.beginPath();
-  dctx.moveTo(lastX, lastY);
-  dctx.lineTo(x, y);
-  dctx.stroke();
-  [lastX, lastY] = [x, y];
-}
+function updateGame() {
+  if(gameOver) return;
 
-function getCoords(e) {
-  if(e.touches) {
-    const rect = drawingCanvas.getBoundingClientRect();
-    return [e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top];
-  } else {
-    return [e.offsetX, e.offsetY];
+  pacman.x += pacman.dirX;
+  pacman.y += pacman.dirY;
+
+  if(pacman.x < 0) pacman.x = gridCount -1;
+  if(pacman.x >= gridCount) pacman.x = 0;
+  if(pacman.y < 0) pacman.y = gridCount -1;
+  if(pacman.y >= gridCount) pacman.y = 0;
+
+  // Comer pellet
+  for(let i = 0; i < pellets.length; i++) {
+    if(pellets[i].x === pacman.x && pellets[i].y === pacman.y) {
+      pellets.splice(i, 1);
+      score++;
+      break;
+    }
+  }
+
+  // Animar boca pacman
+  pacman.mouthOpen = !pacman.mouthOpen;
+
+  // Revisar si ganaste
+  if(pellets.length === 0) {
+    gameOver = true;
+    alert('¡Felicidades! Has comido todos los pellets.');
   }
 }
 
-drawingCanvas.addEventListener('mousedown', startDrawing);
-drawingCanvas.addEventListener('touchstart', startDrawing);
+function drawGame() {
+  pc.fillStyle = '#001100';
+  pc.fillRect(0,0,pacmanCanvas.width,pacmanCanvas.height);
+  drawPellets();
+  drawPacman();
+  pc.fillStyle = '#39ff14';
+  pc.font = '16px monospace';
+  pc.fillText('Puntaje: ' + score, 10, 20);
+}
 
-drawingCanvas.addEventListener('mouseup', stopDrawing);
-drawingCanvas.addEventListener('mouseout', stopDrawing);
-drawingCanvas.addEventListener('touchend', stopDrawing);
-drawingCanvas.addEventListener('touchcancel', stopDrawing);
+function gameLoop() {
+  updateGame();
+  drawGame();
+}
 
-drawingCanvas.addEventListener('mousemove', drawLine);
-drawingCanvas.addEventListener('touchmove', drawLine);
+setInterval(gameLoop, 300);
 
-document.getElementById('clearBtn').addEventListener('click', () => {
-  dctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+// Teclas para controlar Pacman
+window.addEventListener('keydown', e => {
+  switch(e.key) {
+    case 'ArrowUp':
+      pacman.dirX = 0; pacman.dirY = -1;
+      break;
+    case 'ArrowDown':
+      pacman.dirX = 0; pacman.dirY = 1;
+      break;
+    case 'ArrowLeft':
+      pacman.dirX = -1; pacman.dirY = 0;
+      break;
+    case 'ArrowRight':
+      pacman.dirX = 1; pacman.dirY = 0;
+      break;
+  }
 });
 
 /* Comentarios simples */
