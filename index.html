@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Portal de Lukas Alfaro - Diversión, Juegos y Creatividad 3D</title>
-<meta name="description" content="Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, noticias del mundo gamer, impresiones 3D, técnicas para dibujar en tabletas y celulares con movimiento, y más." />
+<title>Portal de Lukas Alfaro - Diversión, Juegos, Manualidades y Creatividad 3D</title>
+<meta name="description" content="Blog para niños con contenido sobre videojuegos, manualidades, tutoriales 3D y técnicas para dibujar en tablets y celulares. Diversión y aprendizaje asegurados." />
 <style>
-  /* Reset y tipografía */
   body, html {
     margin: 0; padding: 0; height: 100%;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     background-color: #000;
     overflow-x: hidden;
+    color: #39ff14;
+    position: relative;
   }
 
-  /* Canvas fijo en background */
   #matrix-canvas {
     position: fixed;
     top: 0; left: 0;
@@ -23,14 +23,13 @@
     z-index: 0;
   }
 
-  /* Contenedor principal encima del canvas */
   .content-wrapper {
     position: relative;
     z-index: 10;
-    color: #39ff14;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding: 10px 20px 40px 20px;
   }
 
   #header-text {
@@ -57,14 +56,13 @@
 
   .page-container {
     display: flex;
-    flex: 1;
-    margin-top: 70px;
-    padding: 20px;
+    flex-wrap: wrap;
     gap: 20px;
+    margin-top: 70px;
   }
 
   .sidebar-left {
-    width: 230px;
+    flex: 1 1 230px;
     background: rgba(0,0,0,0.8);
     border-radius: 15px;
     padding: 15px;
@@ -72,6 +70,7 @@
     display: flex;
     flex-direction: column;
     gap: 18px;
+    min-width: 230px;
   }
 
   .segment-link {
@@ -92,48 +91,50 @@
     color: #000;
   }
 
-  .big-link {
-    background: #004400;
-    padding: 16px;
-    border-radius: 16px;
-    font-size: 1.3rem;
-    font-weight: bolder;
-    color: #b3ffb3;
+  .side-left-image-container {
+    margin-top: 20px;
+    background: rgba(0,51,0,0.9);
+    border-radius: 15px;
+    padding: 8px;
     text-align: center;
-    box-shadow: 0 0 25px #39ff14;
+    box-shadow: 0 0 20px #00ff00;
     cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    color: #ccffcc;
   }
 
-  .big-link:hover {
-    background-color: #33ff33;
-    color: #000;
-  }
-
-  .big-link img {
-    height: 50px;
+  .side-left-image-container img {
+    width: 100%;
     border-radius: 12px;
+    box-shadow: 0 0 16px #00ff00;
+    transition: transform 0.3s ease;
+  }
+
+  .side-left-image-container:hover img {
+    transform: scale(1.05);
+  }
+
+  .side-left-caption {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: underline;
   }
 
   .main-content {
-    flex: 1;
+    flex: 3;
     background: rgba(0, 51, 0, 0.85);
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 0 30px #39ff14;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 40px;
     color: #d4ffd4;
+    min-width: 300px;
   }
 
   .main-image {
-    max-width: 90%;
+    max-width: 100%;
     border-radius: 16px;
     box-shadow: 0 0 30px #39ff14;
   }
@@ -156,36 +157,36 @@
     max-width: 90vw;
     max-height: 600px;
     border-radius: 20px;
-    box-shadow: 0 0 50px #00ff00;
+    box-shadow: 0 0 45px #00ff00;
   }
 
-  .side-left-image-container {
-    margin-top: 20px;
-    background: rgba(0,51,0,0.9);
-    border-radius: 15px;
-    padding: 8px;
+  a.big-link {
+    background: #004400;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: #b3ffb3;
     text-align: center;
-    box-shadow: 0 0 20px #00ff00;
+    box-shadow: 0 0 25px #39ff14;
     cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 700px;
+    margin: 0 auto;
   }
 
-  .side-left-image-container img {
-    width: 100%;
+  a.big-link:hover {
+    background-color: #33ff33;
+    color: #000;
+  }
+
+  a.big-link img {
+    height: 50px;
     border-radius: 12px;
-    box-shadow: 0 0 16px #00ff00;
-    transition: transform 0.3s ease;
-  }
-
-  .side-left-image-container:hover img {
-    transform: scale(1.05);
-  }
-
-  .side-left-caption {
-    color: #ccffcc;
-    margin-top: 8px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-decoration: underline;
   }
 
   p.description {
@@ -195,34 +196,131 @@
     font-weight: 600;
     text-shadow: 1px 1px 3px #002200;
     color: #ccffcc;
+    margin: 0 auto;
   }
 
-  @media (max-width: 720px) {
+  /* Sección juegos y manualidades */
+  .section {
+    background: rgba(0,70,0,0.9);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 15px #00ff00;
+  }
+
+  .section h2 {
+    color: #aaffaa;
+    text-shadow: 0 0 5px #00ff00;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  /* Juego dibujo simple */
+  #drawing-canvas {
+    width: 100%;
+    max-width: 600px;
+    background: #001100;
+    border: 2px solid #00ff00;
+    border-radius: 10px;
+    display: block;
+    margin: 10px auto;
+    cursor: crosshair;
+  }
+
+  /* Controles dibujo */
+  .draw-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+
+  .draw-controls button {
+    background: #003300;
+    border: none;
+    padding: 8px 12px;
+    color: #39ff14;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #00ff00;
+    font-weight: bold;
+  }
+
+  .draw-controls button:hover {
+    background: #00ff00;
+    color: #000;
+  }
+
+  /* Casilla comentarios */
+  .comments-section {
+    background: rgba(0,70,0,0.9);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 15px #00ff00;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .comments-section h2 {
+    color: #aaffaa;
+    text-shadow: 0 0 5px #00ff00;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  textarea#comment-input {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    border: 2px solid #00ff00;
+    background: #001100;
+    color: #ccffcc;
+    resize: none;
+    font-size: 1rem;
+    padding: 8px;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+
+  button#submit-comment {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #003300;
+    border: none;
+    border-radius: 8px;
+    color: #39ff14;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 8px #00ff00;
+    display: block;
+    margin-left: auto;
+  }
+
+  button#submit-comment:hover {
+    background: #00ff00;
+    color: #000;
+  }
+
+  .comment {
+    background: #002200;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+    line-height: 1.2;
+    box-shadow: 0 0 10px #006600;
+    white-space: pre-wrap;
+  }
+
+  /* Responsive */
+  @media (max-width: 960px) {
     .page-container {
       flex-direction: column;
+      margin-top: 100px;
     }
-    .sidebar-left {
+    .sidebar-left, .main-content {
       width: 100%;
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .segment-link {
-      font-size: 0.9rem;
-      padding: 10px 6px;
-    }
-    .big-link {
-      font-size: 1.1rem;
-      padding: 12px;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .big-link img {
-      height: 40px;
-    }
-    .second-image-container {
-      max-width: 90vw;
+      min-width: auto;
+      flex: none;
     }
   }
 </style>
@@ -237,7 +335,7 @@
 
   <div class="page-container">
 
-    <div class="sidebar-left">
+    <aside class="sidebar-left">
       <a class="segment-link" href="https://www.youtube.com/watch?v=X7M2zG8vyMc" target="_blank" rel="noopener noreferrer">
         Cómo dibujar en celular o tablet
       </a>
@@ -245,6 +343,7 @@
       <a class="segment-link" href="https://www.youtube.com/watch?v=18m6w478wjw" target="_blank" rel="noopener noreferrer">
         Cómo imprimir en impresora 3D
       </a>
+
       <a class="segment-link" href="https://cults3d.com/es/etiquetas/toy+story?srsltid=AfmBOoprUIlguEZg_goST-KBNoHWao-7yDzSaMaiU0vb2S0XAOLX0oqt" target="_blank" rel="noopener noreferrer">
         Personas de Toy Story para imprimir en 3D
       </a>
@@ -253,9 +352,9 @@
         <img src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/bajo%203.png?raw=true" alt="¿Por qué no se creó?" />
         <div class="side-left-caption">¿Por qué no se creó?</div>
       </div>
-    </div>
+    </aside>
 
-    <div class="main-content">
+    <main class="main-content">
 
       <div>
         <img class="main-image" src="https://github.com/halfaro-glitch/Lukas-Alfaro-pagina-entretenida/blob/main/imagen%201%20.png?raw=true" alt="Blob de Lukitas" />
@@ -275,12 +374,47 @@
         Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
       </p>
 
-    </div>
+      <!-- Sección de Juegos y Manualidades -->
+      <section class="section" aria-labelledby="juegos-manualidades-title">
+        <h2 id="juegos-manualidades-title">Juegos y Manualidades</h2>
+
+        <!-- Juego simple: Juego de adivinar el número -->
+        <article style="text-align:center; margin-bottom: 30px;">
+          <h3>Juego: Adivina el Número</h3>
+          <p>Piensa en un número entre 1 y 20. ¡Intenta adivinarlo!</p>
+          <input type="number" id="guessInput" min="1" max="20" placeholder="Escribe tu número" aria-label="Número para adivinar" />
+          <button id="guessBtn">Adivinar</button>
+          <p id="guessMessage" style="margin-top:10px; font-weight: bold;"></p>
+        </article>
+
+        <!-- Manualidad: Dibujo simple con canvas -->
+        <article>
+          <h3>Dibuja aquí con el mouse o el dedo</h3>
+          <div class="draw-controls" aria-label="Controles para dibujo">
+            <button id="clearBtn" aria-label="Borrar dibujo">Borrar</button>
+          </div>
+          <canvas id="drawing-canvas" width="600" height="400" aria-label="Área de dibujo"></canvas>
+        </article>
+      </section>
+
+      <!-- Sección Comentarios -->
+      <section class="comments-section" aria-labelledby="comentarios-title">
+        <h2 id="comentarios-title">Comentarios</h2>
+        <form id="commentForm" aria-label="Formulario para dejar comentario">
+          <textarea id="comment-input" placeholder="Deja tu comentario aquí..." required></textarea>
+          <button type="submit" id="submit-comment">Enviar</button>
+        </form>
+        <div id="comments-list" aria-live="polite"></div>
+      </section>
+
+    </main>
 
   </div>
+
 </div>
 
 <script>
+/* Animación Matrix */
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
 
@@ -302,7 +436,6 @@ const drops = new Array(columns).fill(1);
 function draw() {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
   ctx.fillRect(0, 0, width, height);
-
   ctx.fillStyle = '#00ff00';
   ctx.font = fontSize + 'px monospace';
 
@@ -310,17 +443,103 @@ function draw() {
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
     const x = i * fontSize;
     const y = drops[i] * fontSize;
-
     ctx.fillText(text, x, y);
-
-    if(y > height && Math.random() > 0.975) {
-      drops[i] = 0;
-    }
+    if(y > height && Math.random() > 0.975) drops[i] = 0;
     drops[i]++;
   }
 }
-
 setInterval(draw, 40);
+
+/* Juego: Adivina número */
+const guessBtn = document.getElementById('guessBtn');
+const guessInput = document.getElementById('guessInput');
+const guessMessage = document.getElementById('guessMessage');
+const secretNumber = Math.floor(Math.random() * 20) + 1;
+
+guessBtn.addEventListener('click', () => {
+  const guess = Number(guessInput.value);
+  if(isNaN(guess) || guess < 1 || guess > 20) {
+    guessMessage.textContent = 'Por favor, ingresa un número entre 1 y 20.';
+    return;
+  }
+  if(guess === secretNumber) {
+    guessMessage.textContent = '¡Felicidades! Has adivinado el número.';
+  } else if(guess < secretNumber) {
+    guessMessage.textContent = 'Intenta un número más alto.';
+  } else {
+    guessMessage.textContent = 'Intenta un número más bajo.';
+  }
+});
+
+/* Dibujo sencillo */
+const drawingCanvas = document.getElementById('drawing-canvas');
+const dctx = drawingCanvas.getContext('2d');
+let drawing = false;
+let lastX = 0, lastY = 0;
+dctx.strokeStyle = '#39ff14';
+dctx.lineWidth = 3;
+dctx.lineJoin = 'round';
+dctx.lineCap = 'round';
+
+function startDrawing(e) {
+  drawing = true;
+  [lastX, lastY] = getCoords(e);
+}
+
+function stopDrawing() {
+  drawing = false;
+  dctx.beginPath();
+}
+
+function drawLine(e) {
+  if(!drawing) return;
+  const [x, y] = getCoords(e);
+  dctx.beginPath();
+  dctx.moveTo(lastX, lastY);
+  dctx.lineTo(x, y);
+  dctx.stroke();
+  [lastX, lastY] = [x, y];
+}
+
+function getCoords(e) {
+  if(e.touches) {
+    const rect = drawingCanvas.getBoundingClientRect();
+    return [e.touches[0].clientX - rect.left, e.touches[0].clientY - rect.top];
+  } else {
+    return [e.offsetX, e.offsetY];
+  }
+}
+
+drawingCanvas.addEventListener('mousedown', startDrawing);
+drawingCanvas.addEventListener('touchstart', startDrawing);
+
+drawingCanvas.addEventListener('mouseup', stopDrawing);
+drawingCanvas.addEventListener('mouseout', stopDrawing);
+drawingCanvas.addEventListener('touchend', stopDrawing);
+drawingCanvas.addEventListener('touchcancel', stopDrawing);
+
+drawingCanvas.addEventListener('mousemove', drawLine);
+drawingCanvas.addEventListener('touchmove', drawLine);
+
+document.getElementById('clearBtn').addEventListener('click', () => {
+  dctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+});
+
+/* Comentarios simples */
+const commentForm = document.getElementById('commentForm');
+const commentInput = document.getElementById('comment-input');
+const commentsList = document.getElementById('comments-list');
+
+commentForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const text = commentInput.value.trim();
+  if(text.length === 0) return;
+  const commentDiv = document.createElement('div');
+  commentDiv.classList.add('comment');
+  commentDiv.textContent = text;
+  commentsList.appendChild(commentDiv);
+  commentInput.value = '';
+});
 </script>
 </body>
 </html>
