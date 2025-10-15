@@ -221,6 +221,40 @@
     border-radius: 12px;
   }
 
+  /* Styles for touch controls */
+  #touch-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  #touch-controls button {
+    background-color: #004400;
+    border: none;
+    border-radius: 12px;
+    color: #b3ffb3;
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 12px #39ff14;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  #touch-controls button:hover {
+    background-color: #33ff33;
+    color: #000;
+  }
+
+  #touch-controls div {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .n64-section {
     text-align: center;
     background: #004400;
@@ -380,6 +414,16 @@
         <h2 id="juegos-manualidades-title">Juegos y Manualidades</h2>
 
         <canvas id="pacman-canvas" width="400" height="400" aria-label="Juego Pacman"></canvas>
+
+        <!-- Controles táctiles para móviles -->
+        <div id="touch-controls" aria-label="Controles táctiles para Pacman">
+          <button aria-label="Mover arriba" id="btn-up">⬆️</button>
+          <div>
+            <button aria-label="Mover izquierda" id="btn-left">⬅️</button>
+            <button aria-label="Mover derecha" id="btn-right">➡️</button>
+          </div>
+          <button aria-label="Mover abajo" id="btn-down">⬇️</button>
+        </div>
       </section>
 
       <section class="n64-section" aria-label="Juegos de Nintendo 64">
@@ -448,6 +492,7 @@ let pellets = [];
 let score = 0;
 let gameOver = false;
 
+// Generar pellets
 for(let i = 0; i < gridCount; i++) {
   for(let j = 0; j < gridCount; j++) {
     if(!(i === pacman.x && j === pacman.y)) {
@@ -547,6 +592,20 @@ window.addEventListener('keydown', e => {
   }
 });
 
+/* Controles táctiles */
+document.getElementById('btn-up').addEventListener('touchstart', () => {
+  pacman.dirX = 0; pacman.dirY = -1;
+});
+document.getElementById('btn-down').addEventListener('touchstart', () => {
+  pacman.dirX = 0; pacman.dirY = 1;
+});
+document.getElementById('btn-left').addEventListener('touchstart', () => {
+  pacman.dirX = -1; pacman.dirY = 0;
+});
+document.getElementById('btn-right').addEventListener('touchstart', () => {
+  pacman.dirX = 1; pacman.dirY = 0;
+});
+
 /* Comentarios */
 const commentForm = document.getElementById('commentForm');
 const commentInput = document.getElementById('comment-input');
@@ -566,4 +625,3 @@ commentForm.addEventListener('submit', e => {
 
 </body>
 </html>
-
