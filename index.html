@@ -10,8 +10,8 @@
     margin: 0; padding: 0; height: 100%;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     background-color: #000;
-    overflow-x: hidden;
     color: #39ff14;
+    overflow-x: hidden;
     position: relative;
   }
   #matrix-canvas {
@@ -20,6 +20,7 @@
     width: 100vw;
     height: 100vh;
     z-index: 0;
+    background-color: black;
   }
   .content-wrapper {
     position: relative;
@@ -371,55 +372,34 @@
         Este blog fue creado con la finalidad de compartir y subir contenido entretenido y educativo sobre videojuegos, incluyendo logros, reseñas y noticias frescas del mundo gamer, impresiones 3D con modelos y tutoriales para que puedas crear tus propios objetos, además de técnicas para aprender a dibujar y animar dibujos en tabletas y celulares, explorando la creatividad digital de manera divertida y accesible para todas las edades y niveles.
       </p>
 
-      <section class="section" aria-labelledby="juegos-manualidades-title">
-        <h2 id="juegos-manualidades-title">Juegos y Manualidades</h2>
+      <!-- Pantalla jugable con selector y joystick -->
+      <section class="section" aria-labelledby="arcade-section-title">
+        <h2 id="arcade-section-title">Juega tus juegos favoritos</h2>
 
-        <canvas id="pacman-canvas" width="400" height="400" aria-label="Juego Pacman"></canvas>
+        <div id="emulator-container" style="width: 100%; max-width: 820px; margin: 0 auto; border: 3px solid #39ff14; border-radius: 16px; box-shadow: 0 0 20px #00ff00;">
+          <iframe id="emulator-iframe" src="https://binbashbanana.github.io/webretro/embed/embed-example.html" 
+                  title="Emulador Arcade Web" style="width: 100%; height: 480px; border: none; border-radius: 16px;"></iframe>
+        </div>
 
-        <!-- Controles táctiles para móviles -->
-        <div id="touch-controls" aria-label="Controles táctiles para Pacman">
-          <button aria-label="Mover arriba" id="btn-up">⬆️</button>
-          <div>
-            <button aria-label="Mover izquierda" id="btn-left">⬅️</button>
-            <button aria-label="Mover derecha" id="btn-right">➡️</button>
-          </div>
-          <button aria-label="Mover abajo" id="btn-down">⬇️</button>
+        <div id="game-selector" style="margin-top:15px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+          <!-- Los juegos los defines aquí, deben ser URLs de archivos ROMs legales o juegos web -->
+        </div>
+
+        <div id="joystick" role="application" aria-label="Joystick virtual" 
+             style="margin-top: 25px; width: 120px; height: 120px; border-radius: 50%; background: #002200; border: 2px solid #00ff00; position: relative; touch-action: none; margin-left:auto; margin-right:auto;">
+          <div id="stick" style="width: 60px; height: 60px; background: #33ff33; border-radius: 50%; position: absolute; top: 30px; left: 30px;"></div>
+        </div>
+
+        <div id="control-buttons" style="display: flex; justify-content: center; gap: 24px; margin-top: 18px;">
+          <button id="btn-a" aria-label="Botón A" style="background:#003300; border-radius: 12px; border:none; width: 60px; height: 60px; color: #39ff14; font-weight: bold; font-size: 20px; box-shadow: 0 0 10px #00ff00; cursor: pointer;">A</button>
+          <button id="btn-b" aria-label="Botón B" style="background:#003300; border-radius: 12px; border:none; width: 60px; height: 60px; color: #39ff14; font-weight: bold; font-size: 20px; box-shadow: 0 0 10px #00ff00; cursor: pointer;">B</button>
         </div>
       </section>
 
-      <!-- Sección emulador arcade integrada -->
-      <section class="section" aria-labelledby="arcade-title" style="color:#39ff14;">
-        <h2 id="arcade-title">Máquina Arcade Retro - Selección y Juego</h2>
-
-        <div id="arcade-container" style="width: 100%; max-width: 800px; margin: 0 auto; border: 3px solid #39ff14; border-radius: 15px; box-shadow: 0 0 20px #00ff00;">
-          <iframe id="arcade-frame" 
-                  src="https://binbashbanana.github.io/webretro/embed/embed-example.html" 
-                  title="Emulador arcade web" 
-                  style="width: 100%; height: 480px; border: none; border-radius: 15px;">
-          </iframe>
-        </div>
-
-        <div id="game-selector" style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
-          <button class="game-btn" data-rom="dkc.smc" 
-                  style="background:#003300; color:#39ff14; border:none; border-radius:12px; padding:10px 16px; font-weight:bold; cursor:pointer; box-shadow:0 0 10px #00ff00; transition: background-color 0.3s;">
-            Donkey Kong Country (SNES)
-          </button>
-          <button class="game-btn" data-rom="mario3.nes" 
-                  style="background:#003300; color:#39ff14; border:none; border-radius:12px; padding:10px 16px; font-weight:bold; cursor:pointer; box-shadow:0 0 10px #00ff00; transition: background-color 0.3s;">
-            Super Mario Bros 3 (NES)
-          </button>
-          <button class="game-btn" data-rom="sf2.zip" 
-                  style="background:#003300; color:#39ff14; border:none; border-radius:12px; padding:10px 16px; font-weight:bold; cursor:pointer; box-shadow:0 0 10px #00ff00; transition: background-color 0.3s;">
-            Street Fighter II (Arcade)
-          </button>
-        </div>
-      </section>
-
-      <section class="n64-section" aria-label="Juegos de Nintendo 64">
-        <p><strong>Juegos de Nintendo 64:</strong> <a href="https://onlinemania.es/categoria/35/Nintendo-64/1.html" target="_blank" rel="noopener noreferrer">onlinemania.es/categoria/35/Nintendo-64/1.html</a></p>
-      </section>
     </main>
+
   </div>
+
 </div>
 
 <div class="comments-box" aria-label="Caja de comentarios">
@@ -434,7 +414,6 @@
 <script>
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
-
 let width, height;
 function resize() {
   width = window.innerWidth;
@@ -451,157 +430,103 @@ const columns = Math.floor(width / fontSize);
 const drops = new Array(columns).fill(1);
 
 function draw() {
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+  ctx.fillStyle = 'rgba(0,0,0,0.1)';
   ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = '#00ff00';
   ctx.font = fontSize + 'px monospace';
 
-  for(let i = 0; i < drops.length; i++) {
+  for(let i=0; i < drops.length; i++) {
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
     const x = i * fontSize;
     const y = drops[i] * fontSize;
     ctx.fillText(text, x, y);
-    if(y > height && Math.random() > 0.975) drops[i] = 0;
+    if (y > height && Math.random() > 0.975) drops[i] = 0;
     drops[i]++;
   }
 }
 setInterval(draw, 40);
 
-const pacmanCanvas = document.getElementById('pacman-canvas');
-const pc = pacmanCanvas.getContext('2d');
+/* Juegos de ejemplo, debes reemplazar con URLs reales y legales de ROMs públicos */
+const games = [
+  {name: "Super Mario Bros 3 (NES)", rom: "https://example.com/roms/mario3.nes"},
+  {name: "Donkey Kong Country (SNES)", rom: "https://example.com/roms/dkc.smc"},
+  {name: "Street Fighter II (Arcade)", rom: "https://example.com/roms/sf2.zip"}
+];
 
-const gridSize = 20;
-const gridCount = pacmanCanvas.width / gridSize;
+const gameSelectorDiv = document.getElementById('game-selector');
+const emulatorIframe = document.getElementById('emulator-iframe');
 
-let pacman = { x: 10, y: 10, dirX: 0, dirY: 0, mouthOpen: true };
-let pellets = [];
-let score = 0;
-let gameOver = false;
-
-for(let i = 0; i < gridCount; i++) {
-  for(let j = 0; j < gridCount; j++) {
-    if(!(i === pacman.x && j === pacman.y)) {
-      pellets.push({x: i, y: j});
-    }
-  }
-}
-
-function drawPacman() {
-  const px = pacman.x * gridSize + gridSize/2;
-  const py = pacman.y * gridSize + gridSize/2;
-
-  pc.fillStyle = 'yellow';
-  pc.beginPath();
-
-  let startAngle, endAngle;
-  if(pacman.mouthOpen) {
-    startAngle = 0.25 * Math.PI;
-    endAngle = 1.75 * Math.PI;
-  } else {
-    startAngle = 0;
-    endAngle = 2 * Math.PI;
-  }
-  pc.arc(px, py, gridSize/2 - 2, startAngle, endAngle, false);
-  pc.lineTo(px, py);
-  pc.closePath();
-  pc.fill();
-}
-
-function drawPellets() {
-  pc.fillStyle = 'white';
-  pellets.forEach(p => {
-    pc.beginPath();
-    pc.arc(p.x * gridSize + gridSize/2, p.y * gridSize + gridSize/2, gridSize/6, 0, 2*Math.PI);
-    pc.fill();
-  });
-}
-
-function updateGame() {
-  if(gameOver) return;
-
-  pacman.x += pacman.dirX;
-  pacman.y += pacman.dirY;
-
-  if(pacman.x < 0) pacman.x = gridCount -1;
-  if(pacman.x >= gridCount) pacman.x = 0;
-  if(pacman.y < 0) pacman.y = gridCount -1;
-  if(pacman.y >= gridCount) pacman.y = 0;
-
-  for(let i = 0; i < pellets.length; i++) {
-    if(pellets[i].x === pacman.x && pellets[i].y === pacman.y) {
-      pellets.splice(i, 1);
-      score++;
-      break;
-    }
-  }
-
-  pacman.mouthOpen = !pacman.mouthOpen;
-
-  if(pellets.length === 0) {
-    gameOver = true;
-    alert('¡Felicidades! Has comido todos los pellets.');
-  }
-}
-
-function drawGame() {
-  pc.fillStyle = '#001100';
-  pc.fillRect(0,0,pacmanCanvas.width,pacmanCanvas.height);
-  drawPellets();
-  drawPacman();
-  pc.fillStyle = '#39ff14';
-  pc.font = '16px monospace';
-  pc.fillText('Puntaje: ' + score, 10, 20);
-}
-
-function gameLoop() {
-  updateGame();
-  drawGame();
-}
-
-setInterval(gameLoop, 300);
-
-window.addEventListener('keydown', e => {
-  switch(e.key) {
-    case 'ArrowUp':
-      pacman.dirX = 0; pacman.dirY = -1;
-      break;
-    case 'ArrowDown':
-      pacman.dirX = 0; pacman.dirY = 1;
-      break;
-    case 'ArrowLeft':
-      pacman.dirX = -1; pacman.dirY = 0;
-      break;
-    case 'ArrowRight':
-      pacman.dirX = 1; pacman.dirY = 0;
-      break;
-  }
+// Crear botones para elegir juegos
+games.forEach(game => {
+  const btn = document.createElement('button');
+  btn.textContent = game.name;
+  btn.className = 'game-button';
+  btn.style.background = '#003300';
+  btn.style.color = '#39ff14';
+  btn.style.border = 'none';
+  btn.style.borderRadius = '12px';
+  btn.style.padding = '10px 18px';
+  btn.style.fontWeight = 'bold';
+  btn.style.cursor = 'pointer';
+  btn.style.boxShadow = '0 0 10px #00ff00';
+  btn.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+  btn.onclick = () => {
+    emulatorIframe.src = `https://binbashbanana.github.io/webretro/embed/embed-example.html?core=autodetect&rom=${encodeURIComponent(game.rom)}`;
+  };
+  btn.onmouseover = () => {
+    btn.style.backgroundColor = '#00ff00';
+    btn.style.color = '#000';
+  };
+  btn.onmouseout = () => {
+    btn.style.backgroundColor = '#003300';
+    btn.style.color = '#39ff14';
+  };
+  gameSelectorDiv.appendChild(btn);
 });
 
-/* Controles táctiles */
-document.getElementById('btn-up').addEventListener('touchstart', () => {
-  pacman.dirX = 0; pacman.dirY = -1;
-});
-document.getElementById('btn-down').addEventListener('touchstart', () => {
-  pacman.dirX = 0; pacman.dirY = 1;
-});
-document.getElementById('btn-left').addEventListener('touchstart', () => {
-  pacman.dirX = -1; pacman.dirY = 0;
-});
-document.getElementById('btn-right').addEventListener('touchstart', () => {
-  pacman.dirX = 1; pacman.dirY = 0;
-});
+// Joystick Virtual
+const joystick = document.getElementById('joystick');
+const stick = document.getElementById('stick');
+let dragging = false;
+let centerX, centerY;
 
-/* Selector juegos arcade: funcionalidad está deshabilitada para evitar error 404 */
-// const frame = document.getElementById('arcade-frame');
-// const buttons = document.querySelectorAll('.game-btn');
-// buttons.forEach(btn => {
-//   btn.addEventListener('click', () => {
-//     const rom = btn.getAttribute('data-rom');
-//     frame.src = `https://binbashbanana.github.io/webretro/embed/embed-example.html?core=autodetect&rom=${rom}&nobundle`;
-//   });
-// });
+joystick.addEventListener('pointerdown', (e) => {
+  dragging = true;
+  const rect = joystick.getBoundingClientRect();
+  centerX = rect.left + rect.width / 2;
+  centerY = rect.top + rect.height / 2;
+  moveStick(e.clientX, e.clientY);
+});
+window.addEventListener('pointerup', () => {
+  if(!dragging) return;
+  dragging = false;
+  stick.style.left = '30px';
+  stick.style.top = '30px';
+});
+window.addEventListener('pointermove', (e) => {
+  if(!dragging) return;
+  moveStick(e.clientX, e.clientY);
+});
+function moveStick(x, y) {
+  const maxDistance = 40;
+  let deltaX = x - centerX;
+  let deltaY = y - centerY;
+  const distance = Math.min(maxDistance, Math.sqrt(deltaX*deltaX + deltaY*deltaY));
+  if(distance > maxDistance) {
+    const angle = Math.atan2(deltaY, deltaX);
+    deltaX = maxDistance * Math.cos(angle);
+    deltaY = maxDistance * Math.sin(angle);
+  }
+  stick.style.left = `${30 + deltaX}px`;
+  stick.style.top = `${30 + deltaY}px`;
+  // Aquí puedes enviar eventos de control si el iframe lo permite (API)
+}
 
-/* Comentarios */
+// Botones A y B táctiles - solo ejemplos visuales
+document.getElementById('btn-a').addEventListener('click', () => alert('Botón A presionado'));
+document.getElementById('btn-b').addEventListener('click', () => alert('Botón B presionado'));
+
+// Comentarios como en tu código original
 const commentForm = document.getElementById('commentForm');
 const commentInput = document.getElementById('comment-input');
 const commentsList = document.getElementById('comments-list');
