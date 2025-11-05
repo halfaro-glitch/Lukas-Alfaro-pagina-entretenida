@@ -4,34 +4,34 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Street Fighter II - Portal Lukas Alfaro</title>
-<meta name="description" content="Juega Street Fighter II con joystick en página con fondo Matrix y contenido de Lukas Alfaro." />
 <style>
-  body, html {
-    margin: 0; padding: 0; height: 100%;
+  body,html {
+    margin:0; padding:0; height:100%;
     font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: black;
-    color: #39ff14;
-    overflow-x: hidden;
-    position: relative;
+    background:black;
+    color:#39ff14;
+    overflow-x:hidden;
+    position:relative;
   }
   #matrix-canvas {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0;
+    position:fixed;
+    top:0; left:0; width:100vw; height:100vh; z-index:0;
+    background:black;
   }
   .content-wrapper {
     position: relative;
-    z-index: 10;
-    padding: 15px 20px 50px;
-    max-width: 900px;
-    margin: 0 auto;
+    z-index:10;
+    padding:20px;
+    max-width:900px;
+    margin:0 auto;
   }
   #header-text {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #39ff14;
-    text-shadow: 0 0 8px #39ff14;
-    margin-bottom: 15px;
-    text-align: center;
+    font-size:2rem;
+    font-weight:bold;
+    color:#39ff14;
+    text-shadow:0 0 8px #39ff14;
+    margin-bottom:15px;
+    text-align:center;
   }
   a.big-link {
     color: #b3ffb3;
@@ -52,10 +52,10 @@
     width: 100%;
     height: 480px;
     border: 3px solid #39ff14;
-    border-radius: 16px;
+    border-radius:15px;
     box-shadow: 0 0 25px #00ff00;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom:20px;
   }
   iframe#emulator-iframe {
     width: 100%;
@@ -135,7 +135,6 @@
 <script>
 const canvas = document.getElementById('matrix-canvas');
 const ctx = canvas.getContext('2d');
-
 let width, height;
 function resize() {
   width = window.innerWidth;
@@ -145,18 +144,15 @@ function resize() {
 }
 resize();
 window.addEventListener('resize', resize);
-
 const letters = 'アァイィウヴエォカキクケコサシスセソタチツテトナニヌネノハヒフゥヘホマミムメモヤユヨラリルレロワヰヱヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 const fontSize = 16;
 const columns = Math.floor(width / fontSize);
 const drops = new Array(columns).fill(1);
-
 function draw() {
   ctx.fillStyle = 'rgba(0,0,0,0.1)';
   ctx.fillRect(0,0,width,height);
   ctx.fillStyle = '#00ff00';
   ctx.font = fontSize + 'px monospace';
-
   for(let i=0; i < drops.length; i++) {
     const text = letters.charAt(Math.floor(Math.random() * letters.length));
     const x = i * fontSize;
@@ -167,13 +163,11 @@ function draw() {
   }
 }
 setInterval(draw, 40);
-
-// Joystick visual
+// Joystick visual behavior
 const joystick = document.getElementById('joystick');
 const stick = document.getElementById('stick');
 let dragging = false;
 let centerX, centerY;
-
 joystick.addEventListener('pointerdown', (e) => {
   dragging = true;
   const rect = joystick.getBoundingClientRect();
@@ -203,9 +197,8 @@ function moveStick(x,y) {
   }
   stick.style.left = `${30 + deltaX}px`;
   stick.style.top = `${30 + deltaY}px`;
-  // Aquí puede conectarse lógica para enviar input a iframe si disponible
+  // Aquí puede integrarse el control si el emulador soporta API
 }
-
 // Botones visuales A y B
 document.getElementById('btn-a').addEventListener('click', () => alert('Botón A presionado'));
 document.getElementById('btn-b').addEventListener('click', () => alert('Botón B presionado'));
