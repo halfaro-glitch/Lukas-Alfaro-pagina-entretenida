@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Street Fighter II - Portal Lukas Alfaro</title>
+<title>Street Fighter II integrado - Portal Lukas Alfaro</title>
 <style>
   body,html {
     margin:0; padding:0; height:100%;
@@ -50,7 +50,7 @@
   }
   #emulator-container {
     width: 100%;
-    height: 480px;
+    height: 500px;
     border: 3px solid #39ff14;
     border-radius:15px;
     box-shadow: 0 0 25px #00ff00;
@@ -116,10 +116,11 @@
 
   <a href="https://www.youtube.com/channel/UCBA1nK--TI4XUVUNUNcrfdg" target="_blank" class="big-link">Canal de YouTube de Lukas Alfaro</a>
 
+  <!-- Usamos un emulador Genérico que puede no cargar Street Fighter 2 -->
   <div id="emulator-container" aria-label="Pantalla jugable Street Fighter II">
-    <iframe id="emulator-iframe" 
-            src="https://archive.org/embed/sf2_snes" 
-            title="Street Fighter II Emulador" allowfullscreen></iframe>
+    <iframe id="emulator-iframe"
+      src="https://jsfiddle.net/epva32q8/show" 
+      title="Emulador callejero" allowfullscreen></iframe>
   </div>
 
   <div id="joystick" role="application" aria-label="Joystick virtual para controlar el juego">
@@ -163,7 +164,7 @@ function draw() {
   }
 }
 setInterval(draw, 40);
-// Joystick visual behavior
+// Joystick behavior
 const joystick = document.getElementById('joystick');
 const stick = document.getElementById('stick');
 let dragging = false;
@@ -176,13 +177,13 @@ joystick.addEventListener('pointerdown', (e) => {
   moveStick(e.clientX, e.clientY);
 });
 window.addEventListener('pointerup', () => {
-  if (!dragging) return;
+  if(!dragging) return;
   dragging = false;
   stick.style.left = '30px';
   stick.style.top = '30px';
 });
 window.addEventListener('pointermove', (e) => {
-  if (!dragging) return;
+  if(!dragging) return;
   moveStick(e.clientX, e.clientY);
 });
 function moveStick(x,y) {
@@ -197,9 +198,8 @@ function moveStick(x,y) {
   }
   stick.style.left = `${30 + deltaX}px`;
   stick.style.top = `${30 + deltaY}px`;
-  // Aquí puede integrarse el control si el emulador soporta API
 }
-// Botones visuales A y B
+// Botones visuales A/B
 document.getElementById('btn-a').addEventListener('click', () => alert('Botón A presionado'));
 document.getElementById('btn-b').addEventListener('click', () => alert('Botón B presionado'));
 </script>
